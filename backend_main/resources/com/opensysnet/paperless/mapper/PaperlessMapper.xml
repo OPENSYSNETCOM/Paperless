@@ -1,0 +1,566 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.opensysnet.paperless.mapper.PaperlessMapper">
+
+	<resultMap id="UserInfoMap" type="java.util.LinkedHashMap" >
+        <result column="id"            property="user_id"/>
+        <result column="pw"            property="passwd"/>
+        <result column="name"          property="name"/>
+    </resultMap>
+
+	<select id="selectUserInfo" parameterType="java.util.HashMap" resultMap="UserInfoMap">
+        SELECT a.ID, a.PW, a.NAME
+        FROM USERINFO a
+        WHERE a.ID = #{user_id}
+    </select>
+
+    <select id="selectLastStoreSeq" parameterType="java.util.HashMap" resultType="Integer">
+        SELECT *
+        FROM (SELECT SEQ
+              FROM COMPANY_POSITION
+              WHERE SEQ IS NOT NULL ORDER BY SEQ DESC)
+        WHERE ROWNUM = 1
+    </select>
+
+    <resultMap id="StoreInfoMap" type="java.util.LinkedHashMap">
+        <result column="seq"                property="seq"/>
+        <result column="organ"              property="organ"/>
+        <result column="code"               property="code"/>
+        <result column="address"            property="address"/>
+    </resultMap>
+
+    <select id="selectStoreInfoAll" parameterType="java.util.HashMap" resultMap="StoreInfoMap">
+        SELECT SEQ, ORGAN, CODE, ADDRESS
+        FROM COMPANY
+        WHERE SEQ > #{seq}
+        ORDER BY SEQ ASC
+    </select>
+
+    <insert id="insertStorePositionInfo" parameterType="java.util.HashMap">
+        INSERT INTO COMPANY_POSITION
+        VALUES (#{seq}, #{organ}, #{code}, #{address}, #{lat}, #{lon})
+    </insert>
+
+    <resultMap id="StorePositionInfoMap" type="java.util.LinkedHashMap">
+        <result column="address"        property="address"/>
+        <result column="organ"          property="organ"/>
+        <result column="lat"            property="latitude"/>
+        <result column="lon"            property="longitude"/>
+        <result column="num_schedule"   property="num_schedule"/>
+    </resultMap>
+
+    <select id="selectStoreInfo" parameterType="java.util.HashMap" resultMap="StorePositionInfoMap">
+        SELECT a.ADDRESS, a.ORGAN, a.LAT, a.LON,
+               (SELECT COUNT(*) FROM RECEIPT b
+               WHERE a.CODE = b.CODE AND b.SETUPDAY = TO_DATE(SYSDATE, 'YY/MM/DD')) as num_schedule
+        FROM COMPANY_POSITION a
+        WHERE a.LAT BETWEEN #{lat_min} AND #{lat_max} AND a.LON BETWEEN #{lon_min} AND #{lon_max}
+    </select>
+
+    <resultMap id="ScheduleInfoMap" type="java.util.LinkedHashMap">
+        <result column="seq"            property="seq"/>
+        <result column="code"           property="code"/>
+        <result column="organ"          property="organ"/>
+        <result column="receiptionist"  property="receipt"/>
+        <result column="ce"             property="ce"/>
+        <result column="visittime"      property="visittime"/>
+        <result column="checkrequest"   property="status"/>
+        <result column="workdivision"   property="workdivision"/>
+        <result column="paperless_flag" property="paperless_flag"/>
+    </resultMap>
+
+    <select id="selectScheduleInfo" parameterType="java.util.HashMap" resultMap="ScheduleInfoMap">
+        SELECT a.SEQ, a.CODE, a.ORGAN, a.RECEIPTIONIST,
+               a.CE, CONCAT(CONCAT(a.VISITTIME1, ':'), a.VISITTIME2) as visittime,
+               a.CHECKREQUEST, a.WORKDIVISION
+        FROM RECEIPT a
+        WHERE a.SETUPDAY = TO_DATE(#{date}, 'YY/MM/DD')
+    </select>
+
+    <resultMap id="WorkingInfoMap" type="java.util.LinkedHashMap">
+        <result column="seq"            property="seq"/>
+        <result column="organ"          property="organ"/>
+        <result column="starttime"      property="starttime"/>
+        <result column="endtime"        property="endtime"/>
+    </resultMap>
+
+    <select id="selectInstallWorkingInfo" parameterType="java.util.HashMap" resultMap="WorkingInfoMap">
+        SELECT a.SEQ, a.ORGAN, TO_CHAR(a.VISIT_DATETIME, 'HH24MISS') as starttime,
+               TO_CHAR(a.COM_DATETIME, 'HH24MISS') as endtime
+        FROM INSTALL_INFO a
+        WHERE a.SETUPDAY BETWEEN TO_DATE(#{startdate}, 'YYYY-MM-DD') AND TO_DATE(#{enddate}, 'YYYY-MM-DD')
+    </select>
+
+    <select id="selectServiceWorkingInfo" parameterType="java.util.HashMap" resultMap="WorkingInfoMap">
+        SELECT a.SEQ, a.ORGAN, TO_CHAR(a.VISIT_DATETIME, 'HH24MISS') as starttime,
+               TO_CHAR(a.COM_DATETIME, 'HH24MISS') as endtime
+        FROM SERVICE_INFO a
+        WHERE a.VISIT_DATETIME BETWEEN TO_DATE(#{startdate}, 'YYYY-MM-DD') AND TO_DATE(#{enddate}, 'YYYY-MM-DD')
+    </select>
+
+    <resultMap id="InstallDeviceInfoMap" type="java.util.LinkedHashMap">
+        <result column="dev_name"       property="dev_name"/>
+        <result column="dev_order"      property="dev_order"/>
+        <collection property="model_list"   column="dev_name"   select="selectDeviceModelInfo"/>
+    </resultMap>
+
+    <resultMap id="DeviceModelInfoMap" type="java.util.LinkedHashMap">
+        <result column="model_name"     property="model_name"/>
+        <result column="model_order"    property="model_order"/>
+    </resultMap>
+
+    <select id="selectInstallDeviceInfo" parameterType="java.util.HashMap" resultMap="InstallDeviceInfoMap">
+        SELECT DISTINCT DEV_NAME, DEV_ORDER
+        FROM INSTALL_DEV_SEQ
+        ORDER BY DEV_ORDER
+    </select>
+
+    <select id="selectDeviceModelInfo" parameterType="java.util.HashMap" resultMap="DeviceModelInfoMap">
+        SELECT MODEL_NAME, MODEL_ORDER
+        FROM INSTALL_DEV_SEQ
+        WHERE DEV_NAME = #{dev_name}
+        ORDER BY MODEL_ORDER
+    </select>
+
+    <insert id="insertInstallInfo" parameterType="java.util.HashMap">
+        INSERT INTO INSTALL_INFO VALUES
+        (#{seq}, #{code}, #{organ}, #{organ_type}, TO_DATE(#{openday}, 'YYYYMMDD'),
+        TO_DATE(#{setupday}, 'YYYYMMDD'), #{work_type}, #{workdivision},
+        TO_DATE(#{visit_datetime}, 'YYYYMMDD HH24MISS'), TO_DATE(#{com_datetime}, 'YYYYMMDD HH24MISS'),
+        #{ce_name}, #{owner_name}, #{owner_sign}, #{oper_name}, #{oper_sign}, #{comp_name}, #{comp_sign},
+        #{tech_name}, #{tech_sign}, TO_DATE(#{create_date}, 'YYYYMMDD'), null)
+    </insert>
+
+    <insert id="insertInstallDeviceModelInfo" parameterType="java.util.List">
+        <foreach collection="list" item="item" open="INSERT ALL" close="SELECT * FROM DUAL" separator=" ">
+            INTO INSTALL_RESULT VALUES (#{item.seq}, #{item.dev_name}, #{item.dev_order}, #{item.model_name},
+             #{item.asset_code}, #{item.dev_type}, #{item.status}, #{item.description})
+        </foreach>
+    </insert>
+
+    <insert id="insertInstallSamInfo" parameterType="java.util.HashMap">
+        INSERT INTO INSTALL_SAM_RESULT VALUES
+        (#{seq}, #{tmoney_1}, #{tmoney_2}, #{intsam_1}, #{intsam_2})
+    </insert>
+
+    <insert id="insertInstallCheckInfo" parameterType="java.util.HashMap">
+        INSERT INTO INSTALL_CHECK_RESULT VALUES
+        (#{seq}, #{pos_num_check_flag}, #{pos_num_val}, #{pos_ver_check_flag}, #{pos_ver_val},
+        TO_DATE(#{openday}, 'YYYYMMDD'), TO_DATE(#{startday}, 'YYYYMMDD'), #{got_check_flag}, #{got_val},
+        #{internet_flag}, #{internet_val}, #{sc_pgm_flag}, #{sc_pgm_val}, #{pos_cash_flag}, #{pos_cash_val},
+        #{pos_credit_flag}, #{pos_credit_val}, #{pos_point_flag}, #{pos_point_val}, #{sc_work_flag},
+        #{sc_work_val}, #{got_update_flag}, #{got_update_val})
+    </insert>
+
+    <insert id="insertInstallDongleInfo" parameterType="java.util.List">
+        <foreach collection="list" item="item" open="INSERT ALL" close="SELECT * FROM DUAL" separator=" ">
+            INTO INSTALL_DONGLE_CHECK_RESULT VALUES (#{item.seq}, #{item.lsam_name}, #{item.lsam_flag},
+            #{item.reason}, #{item.cr_test}, #{item.pay_test})
+        </foreach>
+    </insert>
+
+    <resultMap id="InstallInfoMap" type="java.util.LinkedHashMap">
+        <result column="seq"            property="seq"/>
+        <result column="code"           property="code"/>
+        <result column="organ"          property="organ"/>
+        <result column="organ_type"     property="organ_type"/>
+        <result column="openday"        property="openday"/>
+        <result column="setupday"       property="setupday"/>
+        <result column="work_type"      property="work_type"/>
+        <result column="workdivision"   property="workdivision"/>
+        <result column="visit_datetime" property="visit_datetime"/>
+        <result column="com_datetime"   property="com_datetime"/>
+        <result column="ce_name"        property="ce_name"/>
+        <result column="owner_name"     property="owner_name"/>
+        <result column="owner_sign"     property="owner_sign"/>
+        <result column="oper_name"      property="oper_name"/>
+        <result column="oper_sign"      property="oper_sign"/>
+        <result column="comp_name"      property="comp_name"/>
+        <result column="comp_sign"      property="comp_sign"/>
+        <result column="tech_name"      property="tech_name"/>
+        <result column="tech_sign"      property="tech_sign"/>
+        <result column="create_date"    property="create_date"/>
+    </resultMap>
+
+    <select id="selectInstallInfo" parameterType="java.util.HashMap" resultMap="InstallInfoMap">
+        SELECT SEQ, CODE, ORGAN, ORGAN_TYPE, TO_CHAR(OPENDAY, 'YYYY-MM-DD') as openday,
+               TO_CHAR(SETUPDAY, 'YYYY-MM-DD') as setupday, WORK_TYPE, WORKDIVISION,
+               TO_CHAR(VISIT_DATETIME, 'YYYY-MM-DD HH24:MI:SS') as visit_datetime,
+               TO_CHAR(COM_DATETIME, 'YYYY-MM-DD HH24:MI:SS') as com_datetime,
+               CE_NAME, OWNER_NAME, OWNER_SIGN, OPER_NAME, OPER_SIGN, COMP_NAME, COMP_SIGN,
+               TECH_NAME, TECH_SIGN, TO_CHAR(CREATE_DATE, 'YYYY-MM-DD') as create_date
+        FROM INSTALL_INFO
+        WHERE SEQ = #{seq}
+    </select>
+
+    <resultMap id="InstallDeviceModelInfoMap" type="java.util.LinkedHashMap">
+        <result column="dev_name"       property="dev_name"/>
+        <result column="dev_order"      property="dev_order"/>
+        <result column="model_name"     property="model_name"/>
+        <result column="asset_code"     property="asset_code"/>
+        <result column="dev_type"       property="dev_type"/>
+        <result column="status"         property="status"/>
+        <result column="description"    property="description"/>
+    </resultMap>
+
+    <select id="selectInstallDeviceModelInfo" parameterType="java.util.HashMap" resultMap="InstallDeviceModelInfoMap">
+        SELECT  DEV_NAME, DEV_ORDER, MODEL_NAME, ASSET_CODE, DEV_TYPE, STATUS, DESCRIPTION
+        FROM INSTALL_RESULT
+        WHERE SEQ = #{seq}
+    </select>
+
+    <resultMap id="InstallSamInfoMap" type="java.util.LinkedHashMap">
+        <result column="tmoney_1"       property="tmoney_1"/>
+        <result column="tmoney_2"       property="tmoney_2"/>
+        <result column="intsam_1"       property="intsam_1"/>
+        <result column="intsam_2"       property="intsam_2"/>
+    </resultMap>
+
+    <select id="selectInstallSamInfo" parameterType="java.util.HashMap" resultMap="InstallSamInfoMap">
+        SELECT TMONEY_1, TMONEY_2, INTSAM_1, INTSAM_2
+        FROM INSTALL_SAM_RESULT
+        WHERE SEQ = #{seq}
+    </select>
+
+    <resultMap id="InstallCheckInfoMap" type="java.util.LinkedHashMap">
+        <result column="pos_num_check_flag"     property="pos_num_check_flag"/>
+        <result column="pos_num_val"            property="pos_num_val"/>
+        <result column="pos_ver_check_flag"     property="pos_ver_check_flag"/>
+        <result column="pos_ver_val"            property="pos_ver_val"/>
+        <result column="openday"                property="openday"/>
+        <result column="startday"               property="startday"/>
+        <result column="got_check_flag"         property="got_check_val"/>
+        <result column="got_val"                property="got_val"/>
+        <result column="internet_flag"          property="internet_flag"/>
+        <result column="internet_val"           property="internet_val"/>
+        <result column="sc_pgm_flag"            property="sc_pgm_flag"/>
+        <result column="sc_pgm_val"             property="sc_pgm_val"/>
+        <result column="pos_cash_flag"          property="pos_cash_flag"/>
+        <result column="pos_cash_val"           property="pos_cash_val"/>
+        <result column="pos_credit_flag"        property="pos_credit_flag"/>
+        <result column="pos_credit_val"         property="pos_credit_val"/>
+        <result column="pos_point_flag"         property="pos_point_flag"/>
+        <result column="pos_point_val"          property="pos_point_val"/>
+        <result column="sc_work_flag"           property="sc_work_flag"/>
+        <result column="sc_work_val"            property="sc_work_val"/>
+        <result column="got_update_flag"        property="got_update_flag"/>
+        <result column="got_update_val"         property="got_update_val"/>
+    </resultMap>
+
+    <select id="selectInstallCheckInfo" parameterType="java.util.HashMap" resultMap="InstallCheckInfoMap">
+        SELECT POS_NUM_CHECK_FLAG, POS_NUM_VAL, POS_VER_CHECK_FLAG, POS_VER_VAL,
+               TO_CHAR(OPENDAY, 'YYYY-MM-DD') as openday, TO_CHAR(STARTDAY, 'YYYY-MM-DD') as startday,
+               GOT_CHECK_FLAG, GOT_VAL, INTERNET_FLAG, INTERNET_VAL, SC_PGM_FLAG, SC_PGM_VAL,
+               POS_CASH_FLAG, POS_CASH_VAL, POS_CREDIT_FLAG, POS_CREDIT_VAL,
+               POS_POINT_FLAG, POS_POINT_VAL, SC_WORK_FLAG, SC_WORK_VAL,
+               GOT_UPDATE_FLAG, GOT_UPDATE_VAL
+        FROM INSTALL_CHECK_RESULT
+        WHERE SEQ = #{seq}
+    </select>
+
+    <resultMap id="InstallDongleInfoMap" type="java.util.LinkedHashMap">
+        <result column="lsam_name"          property="lsam_name"/>
+        <result column="lsam_flag"          property="lsam_flag"/>
+        <result column="reason"             property="reason"/>
+        <result column="cr_test"            property="cr_test"/>
+        <result column="pay_test"           property="pay_test"/>
+    </resultMap>
+
+    <select id="selectInstallDongleInfo" parameterType="java.util.HashMap" resultMap="InstallDongleInfoMap">
+        SELECT LSAM_NAME, LSAM_FLAG, REASON, CR_TEST, PAY_TEST
+        FROM INSTALL_DONGLE_CHECK_RESULT
+        WHERE SEQ = #{seq}
+    </select>
+
+    <update id="modifyInstallInfo" parameterType="java.util.HashMap">
+        UPDATE INSTALL_INFO
+        SET MODIFY_DATETIME = SYSDATE
+        <if test="organ_type != null and organ_type != ''">, ORGAN_TYPE = #{organ_type} </if>
+        <if test="openday != null and openday != ''">, OPENDAY = TO_DATE(#{openday}, 'YYYYMMDD')  </if>
+        <if test="setupday != null and setupday != ''">, SETUPDAY = TO_DATE(#{setupday}, 'YYYYMMDD') </if>
+        <if test="work_type != null and work_type != ''">, WORK_TYPE = #{work_type} </if>
+        <if test="workdivision != null and workdivision != ''">, WORKDIVISION = #{workdivision} </if>
+        <if test="visit_datetime != null and visit_datetime != ''">, VISIT_DATETIME = TO_DATE(#{visit_datetime}, 'YYYYMMDD HH24MISS') </if>
+        <if test="com_datetime != null and com_datetime != ''">, COM_DATETIME = TO_DATE(#{com_datetime}, 'YYYYMMDD HH24MISS') </if>
+        <if test="ce_name != null and ce_name != ''">, CE_NAME = #{ce_name} </if>
+        <if test="owner_name != null and owner_name != ''">, OWNER_NAME = #{owner_name} </if>
+        <if test="owner_sign != null and owner_sign != ''">, OWNER_SIGN = #{owner_sign} </if>
+        <if test="oper_name != null and oper_name != ''">, OPER_NAME = #{oper_name} </if>
+        <if test="oper_sign != null and oper_sign != ''">, OPER_SIGN = #{oper_sign} </if>
+        <if test="comp_name != null and comp_name != ''">, COMP_NAME = #{comp_name} </if>
+        <if test="comp_sign != null and comp_sign != ''">, COMP_SIGN = #{comp_sign} </if>
+        <if test="tech_name != null and tech_name != ''">, TECH_NAME = #{tech_name} </if>
+        <if test="tech_sign != null and tech_sign != ''">, TECH_SIGN = #{tech_sign} </if>
+        <if test="create_date != null and create_date != ''">, CREATE_DATE = TO_DATE(#{create_date}, 'YYYYMMDD') </if>
+        WHERE SEQ = #{seq}
+    </update>
+
+    <update id="modifyInstallDeviceModelInfo" parameterType="java.util.HashMap">
+        UPDATE INSTALL_RESULT
+        SET MODIFY_DATETIME = SYSDATE
+        <if test="model_name != null and model_name != ''">, MODEL_NAME = #{model_name} </if>
+        <if test="asset_code != null and asset_code != ''">, ASSET_CODE = #{asset_code} </if>
+        <if test="dev_type != null and dev_type != ''">, DEV_TYPE = #{dev_type} </if>
+        <if test="status != null and status != ''">, STATUS = #{status} </if>
+        <if test="description != null and description != ''">, DESCRIPTION = #{description} </if>
+        WHERE SEQ = #{seq} AND DEV_NAME = #{dev_name}
+    </update>
+
+    <update id="modifyInstallSamInfo" parameterType="java.util.HashMap">
+        UPDATE INSTALL_SAM_RESULT
+        SET MODIFY_DATETIME = SYSDATE
+        <if test="tmoney_1 != null and tmoney_1 != ''">, TMONEY_1 = #{tmoney_1} </if>
+        <if test="tmoney_2 != null and tmoney_2 != ''">, TMONEY_2 = #{tmoney_2} </if>
+        <if test="intsam_1 != null and intsam_1 != ''">, INTSAM_1 = #{intsam_1} </if>
+        <if test="intsam_2 != null and intsam_2 != ''">, INTSAM_2 = #{intsam_2} </if>
+        WHERE SEQ = #{seq}
+    </update>
+
+    <update id="modifyInstallCheckInfo" parameterType="java.util.HashMap">
+        UPDATE INSTALL_CHECK_RESULT
+        SET MODIFY_DATETIME = SYSDATE
+        <if test="pos_num_check_flag != null and pos_num_check_flag != ''">, POS_NUM_CHECK_FLAG = #{pos_num_check_flag} </if>
+        <if test="pos_num_val != null and pos_num_val != ''">, POS_NUM_VAL = #{pos_num_val} </if>
+        <if test="pos_ver_check_flag != null and pos_ver_check_flag != ''">, POS_VER_CHECK_FLAG = #{pos_ver_check_flag} </if>
+        <if test="pos_ver_val != null and pos_ver_val != ''">, POS_VER_VAL = #{pos_ver_val} </if>
+        <if test="openday != null and openday != ''">, OPENDAY= TO_DATE(#{openday}, 'YYYYMMDD') </if>
+        <if test="startday != null and startday != ''">, STARTDAY = TO_DATE(#{startday}, 'YYYYMMDD') </if>
+        <if test="got_check_flag != null and got_check_flag != ''">, GOT_CHECK_FLAG = #{got_check_flag} </if>
+        <if test="got_val != null and got_val != ''">, GOT_VAL = #{got_val} </if>
+        <if test="internet_flag != null and internet_flag != ''">, INTERNET_FLAG = #{internet_flag} </if>
+        <if test="internet_val != null and internet_val != ''">, INTERNET_VAL = #{internet_val} </if>
+        <if test="sc_pgm_flag != null and sc_pgm_flag != ''">, SC_PGM_FLAG = #{sc_pgm_flag} </if>
+        <if test="sc_pgm_val != null and sc_pgm_val != ''">, SC_PGM_VAL = #{sc_pgm_val} </if>
+        <if test="pos_cash_flag != null and pos_cash_flag != ''">, POS_CASH_FLAG = #{pos_cash_flag} </if>
+        <if test="pos_cash_val != null and pos_cash_val != ''">, POS_CASH_VAL = #{pos_cash_val} </if>
+        <if test="pos_credit_flag != null and pos_credit_flag != ''">, POS_CREDIT_FLAG = #{pos_credit_flag} </if>
+        <if test="pos_credit_val != null and pos_credit_val != ''">, POS_CREDIT_VAL = #{pos_credit_val} </if>
+        <if test="pos_point_flag != null and pos_point_flag != ''">, POS_POINT_FLAG = #{pos_point_flag} </if>
+        <if test="pos_point_val != null and pos_point_val != ''">, POS_POINT_VAL = #{pos_point_val} </if>
+        <if test="sc_work_flag != null and sc_work_flag != ''">, SC_WORK_FLAG = #{sc_work_flag} </if>
+        <if test="sc_work_val != null and sc_work_val != ''">, SC_WORK_VAL = #{sc_work_val} </if>
+        <if test="got_update_flag != null and got_update_flag != ''">, GOT_UPDATE_FLAG = #{got_update_flag} </if>
+        <if test="got_update_val != null and got_update_val != ''">, GOT_UPDATE_VAL = #{got_update_val} </if>
+        WHERE SEQ = #{seq}
+    </update>
+
+    <update id="modifyInstallDongleInfo" parameterType="java.util.HashMap">
+        UPDATE INSTALL_DONGLE_CHECK_RESULT
+        SET MODIFY_DATETIME = SYSDATE
+        <if test="lsam_flag != null and lsam_flag != ''">, LSAM_FLAG = #{lsam_flag} </if>
+        <if test="reason != null and reason != ''">, REASON = #{reason} </if>
+        <if test="cr_test != null and cr_test != ''">, CR_TEST = #{cr_test} </if>
+        <if test="pay_test != null and pay_test != ''">, PAY_TEST = #{pay_test} </if>
+        WHERE SEQ = #{seq} AND LSAM_NAME = #{lsam_name}
+    </update>
+
+    <resultMap id="InstallSignInfoMap" type="java.util.LinkedHashMap">
+        <result column="owner_sign"     property="owner_sign"/>
+        <result column="oper_sign"      property="oper_sign"/>
+        <result column="comp_sign"      property="comp_sign"/>
+        <result column="tech_sign"      property="tech_sign"/>
+    </resultMap>
+
+    <select id="selectInstallSignInfo" parameterType="java.util.HashMap" resultMap="InstallSignInfoMap">
+        SELECT OWNER_SIGN, OPER_SIGN, COMP_SIGN, TECH_SIGN
+        FROM INSTALL_INFO
+        WHERE SEQ = #{seq}
+    </select>
+
+    <delete id="deleteInstallInfo" parameterType="java.util.HashMap">
+        DELETE FROM INSTALL_INFO WHERE SEQ = #{seq}
+    </delete>
+
+    <delete id="deleteInstallDeviceModelInfo" parameterType="java.util.HashMap">
+        DELETE FROM INSTALL_RESULT WHERE SEQ = #{seq}
+    </delete>
+
+    <delete id="deleteInstallSamInfo" parameterType="java.util.HashMap">
+        DELETE FROM INSTALL_SAM_RESULT WHERE SEQ = #{seq}
+    </delete>
+
+    <delete id="deleteInstallCheckInfo" parameterType="java.util.HashMap">
+        DELETE FROM INSTALL_CHECK_RESULT WHERE SEQ = #{seq}
+    </delete>
+
+    <delete id="deleteInstallDongleInfo" parameterType="java.util.HashMap">
+        DELETE FROM INSTALL_DONGLE_CHECK_RESULT WHERE SEQ = #{seq}
+    </delete>
+
+    <resultMap id="ServiceDeviceInfoMap" type="java.util.LinkedHashMap">
+        <result column="dev_name"       property="dev_name"/>
+        <result column="dev_order"      property="dev_order"/>
+        <collection property="model_list"   column="dev_name"   select="selectServiceDeviceModelInfo"/>
+    </resultMap>
+
+    <select id="selectServiceDeviceInfo" parameterType="java.util.HashMap" resultMap="ServiceDeviceInfoMap">
+        SELECT DISTINCT DEV_NAME, DEV_ORDER
+        FROM SERVICE_DEV_SEQ
+        ORDER BY DEV_ORDER
+    </select>
+
+    <select id="selectServiceDeviceModelInfo" parameterType="java.util.HashMap" resultMap="DeviceModelInfoMap">
+        SELECT MODEL_NAME, MODEL_ORDER
+        FROM SERVICE_DEV_SEQ
+        WHERE DEV_NAME = #{dev_name}
+        ORDER BY MODEL_ORDER
+    </select>
+
+    <resultMap id="ServiceCheckInfoMap" type="java.util.LinkedHashMap">
+        <result column="dev_name"       property="dev_name"/>
+        <collection property="check_list"   column="dev_name"   select="selectServiceCheckItemInfo"/>
+    </resultMap>
+
+    <resultMap id="ServiceCheckItemInfoMap" type="java.util.LinkedHashMap">
+        <result column="check_list"     property="check_item"/>
+        <result column="check_order"    property="check_order"/>
+    </resultMap>
+
+    <select id="selectServiceCheckInfo" parameterType="java.util.HashMap" resultMap="ServiceCheckInfoMap">
+        SELECT DISTINCT DEV_NAME
+        FROM SERVICE_CHECK_INFO
+    </select>
+
+    <select id="selectServiceCheckItemInfo" parameterType="java.util.HashMap" resultMap="ServiceCheckItemInfoMap">
+        SELECT CHECK_LIST, CHECK_ORDER
+        FROM SERVICE_CHECK_INFO
+        WHERE DEV_NAME = #{dev_name}
+        ORDER BY CHECK_ORDER
+    </select>
+
+    <insert id="insertServiceInfo" parameterType="java.util.HashMap">
+        INSERT INTO SERVICE_INFO VALUES
+        (#{seq}, #{code}, #{organ}, #{work_type}, #{workdivision}, TO_DATE(#{receipt_datetime}, 'YYYYMMDD HH24MISS'),
+        TO_DATE(#{visit_datetime}, 'YYYYMMDD HH24MISS'), TO_DATE(#{com_datetime}, 'YYYYMMDD HH24MISS'),
+        #{ce_name}, #{owner_name}, #{owner_sign}, #{owner_comment}, #{ce_sign},
+        TO_DATE(#{create_date}, 'YYYYMMDD'), null)
+    </insert>
+
+    <insert id="insertServiceDeviceModelInfo" parameterType="java.util.List">
+        <foreach collection="list" item="item" open="INSERT ALL" close="SELECT * FROM DUAL" separator=" ">
+            INTO SERVICE_RESULT VALUES (#{item.seq}, #{item.dev_name}, #{item.dev_order},
+            #{item.model_name}, #{item.dev_num})
+        </foreach>
+    </insert>
+
+    <insert id="insertServiceFixInfo" parameterType="java.util.List">
+        <foreach collection="list" item="item" open="INSERT ALL" close="SELECT * FROM DUAL" separator=" ">
+            INTO SERVICE_FIX_INFO VALUES (#{item.seq}, #{item.dev_name}, #{item.problem}, #{item.process})
+        </foreach>
+    </insert>
+
+    <insert id="insertServicePartInfo" parameterType="java.util.List">
+        <foreach collection="list" item="item" open="INSERT ALL" close="SELECT * FROM DUAL" separator=" ">
+            INTO SERVICE_PART_INFO VALUES (#{item.seq}, #{item.part_name}, #{item.part_num})
+        </foreach>
+    </insert>
+
+    <update id="modifyServiceInfo" parameterType="java.util.HashMap">
+        UPDATE SERVICE_INFO
+        SET MODIFY_DATETIME = SYSDATE
+        <if test="visit_datetime != null and visit_datetime != ''">, VISIT_DATETIME = TO_DATE(#{visit_datetime}, 'YYYYMMDD HH24MISS') </if>
+        <if test="com_datetime != null and com_datetime != ''">, COM_DATETIME = TO_DATE(#{com_datetime}, 'YYYYMMDD HH24MISS') </if>
+        <if test="ce_name != null and ce_name != ''">, CE_NAME = #{ce_name} </if>
+        <if test="ce_sign != null and ce_sign != ''">, CE_SIGN = #{ce_sign} </if>
+        <if test="owner_name != null and owner_name != ''">, OWNER_NAME = #{owner_name} </if>
+        <if test="owner_sign != null and owner_sign != ''">, OWNER_SIGN = #{owner_sign} </if>
+        <if test="owner_comment != null and owner_comment != ''">, OWNER_COMMENT = #{owner_comment} </if>
+        <if test="create_date != null and create_date != ''">, CREATE_DATE = TO_DATE(#{create_date}, 'YYYYMMDD') </if>
+        WHERE SEQ = #{seq}
+    </update>
+
+    <resultMap id="ServiceSignInfoMap" type="java.util.LinkedHashMap">
+        <result column="owner_sign"     property="owner_sign"/>
+        <result column="ce_sign"      property="ce_sign"/>
+    </resultMap>
+
+    <select id="selectServiceSignInfo" parameterType="java.util.HashMap" resultMap="ServiceSignInfoMap">
+        SELECT OWNER_SIGN, CE_SIGN
+        FROM SERVICE_INFO
+        WHERE SEQ = #{seq}
+    </select>
+
+    <resultMap id="ServiceInfoMap" type="java.util.LinkedHashMap">
+        <result column="seq"                property="seq"/>
+        <result column="code"               property="code"/>
+        <result column="organ"              property="organ"/>
+        <result column="work_type"          property="work_type"/>
+        <result column="workdivision"       property="workdivision"/>
+        <result column="receipt_datetime"   property="receipt_datetime"/>
+        <result column="visit_datetime"     property="visit_datetime"/>
+        <result column="com_datetime"       property="com_datetime"/>
+        <result column="ce_name"            property="ce_name"/>
+        <result column="ce_sign"            property="ce_sign"/>
+        <result column="owner_name"     property="owner_name"/>
+        <result column="owner_sign"     property="owner_sign"/>
+        <result column="owner_comment"      property="owner_comment"/>
+        <result column="create_date"      property="create_date"/>
+        <collection property="dev_list"   column="seq"   select="selectServiceDeviceList"/>
+        <collection property="fix_list"   column="seq"   select="selectServiceFixList"/>
+        <collection property="part_list"   column="seq"   select="selectServicePartList"/>
+    </resultMap>
+
+    <resultMap id="ServiceDeviceModelInfoMap" type="java.util.LinkedHashMap">
+        <result column="dev_name"       property="dev_name"/>
+        <result column="dev_order"      property="dev_order"/>
+        <result column="model_name"     property="model_name"/>
+        <result column="dev_num"        property="dev_num"/>
+    </resultMap>
+
+    <resultMap id="ServiceFixInfoMap" type="java.util.LinkedHashMap">
+        <result column="dev_name"       property="dev_name"/>
+        <result column="problem"        property="problem"/>
+        <result column="process"        property="process"/>
+    </resultMap>
+
+    <resultMap id="ServicePartInfoMap" type="java.util.LinkedHashMap">
+        <result column="part_name"      property="part_name"/>
+        <result column="part_num"       property="part_num"/>
+    </resultMap>
+
+    <select id="selectServiceInfo" parameterType="java.util.HashMap" resultMap="ServiceInfoMap">
+        SELECT SEQ, CODE, ORGAN, WORK_TYPE, WORKDIVISION,
+               TO_CHAR(RECEIPT_DATETIME, 'YYYY-MM-DD HH24:MI:SS') as receipt_datetime,
+               TO_CHAR(VISIT_DATETIME, 'YYYY-MM-DD HH24:MI:SS') as visit_datetime,
+               TO_CHAR(COM_DATETIME, 'YYYY-MM-DD HH24:MI:SS') as com_datetime,
+               CE_NAME, CE_SIGN, OWNER_NAME, OWNER_SIGN, OWNER_COMMENT,
+               TO_CHAR(CREATE_DATE, 'YYYY-MM-DD') as create_date
+        FROM SERVICE_INFO
+        WHERE SEQ = #{seq}
+    </select>
+
+    <select id="selectServiceDeviceList" parameterType="java.util.HashMap" resultMap="ServiceDeviceModelInfoMap">
+        SELECT DEV_NAME, DEV_ORDER, MODEL_NAME, DEV_NUM
+        FROM SERVICE_RESULT
+        WHERE SEQ = #{seq}
+    </select>
+
+    <select id="selectServiceFixList" parameterType="java.util.HashMap" resultMap="ServiceFixInfoMap">
+        SELECT DEV_NAME, PROBLEM, PROCESS
+        FROM SERVICE_FIX_INFO
+        WHERE SEQ = #{seq}
+    </select>
+
+    <select id="selectServicePartList" parameterType="java.util.HashMap" resultMap="ServicePartInfoMap">
+        SELECT PART_NAME, PART_NUM
+        FROM SERVICE_PART_INFO
+        WHERE SEQ = #{seq}
+    </select>
+
+    <delete id="deleteServiceDeviceModelInfo" parameterType="java.util.HashMap">
+        DELETE FROM SERVICE_RESULT WHERE SEQ = #{seq}
+    </delete>
+
+    <delete id="deleteServiceFixInfo" parameterType="java.util.HashMap">
+        DELETE FROM SERVICE_FIX_INFO WHERE SEQ = #{seq}
+    </delete>
+
+    <delete id="deleteServicePartInfo" parameterType="java.util.HashMap">
+        DELETE FROM SERVICE_PART_INFO WHERE SEQ = #{seq}
+    </delete>
+
+    <delete id="deleteServiceInfo" parameterType="java.util.HashMap">
+        DELETE FROM SERVICE_INFO WHERE SEQ = #{seq}
+    </delete>
+
+</mapper>

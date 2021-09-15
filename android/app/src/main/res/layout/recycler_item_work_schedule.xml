@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ri_work_schedule_cl_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/box_size_10"
+        android:paddingTop="@dimen/box_size_12"
+        android:paddingBottom="@dimen/box_size_12"
+        android:paddingStart="@dimen/box_size_15"
+        android:paddingEnd="@dimen/box_size_15"
+        android:background="@drawable/bg_border_cdd8de">
+
+        <TextView
+            android:id="@+id/ri_work_schedule_tv_count"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/box_size_20"
+            android:layout_marginTop="@dimen/box_size_1"
+            android:layout_marginEnd="@dimen/box_size_8"
+            android:paddingStart="@dimen/box_size_11"
+            android:paddingEnd="@dimen/box_size_11"
+            android:gravity="center"
+            android:text="test"
+            android:textSize="@dimen/txt_size_13"
+            android:textColor="@color/color_ffffff"
+            android:fontFamily="@font/roboto_bold"
+            android:background="@drawable/bg_count_f70639"
+            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/ri_work_schedule_tv_type"/>
+
+        <TextView
+            android:id="@+id/ri_work_schedule_tv_type"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/box_size_22"
+            android:gravity="center_vertical"
+            android:text="test"
+            android:textSize="@dimen/txt_size_15"
+            android:textColor="@color/color_ed1c24"
+            android:fontFamily="@font/roboto_bold"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/ri_work_schedule_tv_target"
+            app:layout_constraintStart_toEndOf="@id/ri_work_schedule_tv_count"
+            app:layout_constraintEnd_toStartOf="@id/ri_work_schedule_tv_time" />
+
+        <TextView
+            android:id="@+id/ri_work_schedule_tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/box_size_22"
+            android:layout_marginStart="@dimen/box_size_6"
+            android:gravity="center_vertical"
+            android:text="test"
+            android:textSize="@dimen/txt_size_15"
+            android:textColor="@color/color_000000"
+            android:fontFamily="@font/roboto_bold"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/ri_work_schedule_tv_target"
+            app:layout_constraintStart_toEndOf="@id/ri_work_schedule_tv_type"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/ri_work_schedule_tv_target"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/box_size_24"
+            android:gravity="center_vertical"
+            android:text="test"
+            android:textSize="@dimen/txt_size_15"
+            android:textColor="@color/color_000000"
+            android:fontFamily="@font/roboto_medium"
+            app:layout_constraintTop_toBottomOf="@id/ri_work_schedule_tv_type"
+            app:layout_constraintBottom_toTopOf="@id/ri_work_schedule_ll_receiver"
+            app:layout_constraintStart_toStartOf="@id/ri_work_schedule_tv_type"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <LinearLayout
+            android:id="@+id/ri_work_schedule_ll_receiver"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/box_size_22"
+            android:layout_marginTop="@dimen/box_size_5"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/ri_work_schedule_tv_target"
+            app:layout_constraintBottom_toTopOf="@id/ri_work_schedule_ll_owner"
+            app:layout_constraintStart_toStartOf="@id/ri_work_schedule_tv_target"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="@dimen/box_size_47"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_radius_707070"
+                    android:gravity="center"
+                    android:text="@string/work_schedule_receiver"
+                    android:textSize="@dimen/txt_size_12"
+                    android:textColor="@color/color_ffffff"
+                    android:fontFamily="@font/roboto_regular"/>
+
+                <TextView
+                    android:id="@+id/ri_work_schedule_tv_receiver"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/box_size_7"
+                    android:text="test"
+                    android:textSize="@dimen/txt_size_14"
+                    android:textColor="@color/color_333333"
+                    android:fontFamily="@font/roboto_regular"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="@dimen/box_size_47"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_radius_707070"
+                    android:gravity="center"
+                    android:text="@string/work_schedule_status"
+                    android:textSize="@dimen/txt_size_12"
+                    android:textColor="@color/color_ffffff"
+                    android:fontFamily="@font/roboto_regular"/>
+
+                <TextView
+                    android:id="@+id/ri_work_schedule_tv_status"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/box_size_7"
+                    android:text="test"
+                    android:textSize="@dimen/txt_size_14"
+                    android:textColor="@color/color_333333"
+                    android:fontFamily="@font/roboto_regular"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ri_work_schedule_ll_owner"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/box_size_22"
+            android:layout_marginTop="@dimen/box_size_2_5"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/ri_work_schedule_ll_receiver"
+            app:layout_constraintBottom_toTopOf="@id/ri_work_schedule_btn_doc"
+            app:layout_constraintStart_toStartOf="@id/ri_work_schedule_ll_receiver"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="@dimen/box_size_47"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_radius_707070"
+                    android:gravity="center"
+                    android:text="@string/work_schedule_owner"
+                    android:textSize="@dimen/txt_size_12"
+                    android:textColor="@color/color_ffffff"
+                    android:fontFamily="@font/roboto_regular"/>
+
+                <TextView
+                    android:id="@+id/ri_work_schedule_tv_owner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/box_size_7"
+                    android:text="test"
+                    android:textSize="@dimen/txt_size_14"
+                    android:textColor="@color/color_333333"
+                    android:fontFamily="@font/roboto_regular"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="@dimen/box_size_47"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_radius_707070"
+                    android:gravity="center"
+                    android:text="@string/work_schedule_paper"
+                    android:textSize="@dimen/txt_size_12"
+                    android:textColor="@color/color_ffffff"
+                    android:fontFamily="@font/roboto_regular"/>
+
+                <TextView
+                    android:id="@+id/ri_work_schedule_tv_paper"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/box_size_7"
+                    android:text="test"
+                    android:textSize="@dimen/txt_size_14"
+                    android:textColor="@color/color_333333"
+                    android:fontFamily="@font/roboto_regular"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/ri_work_schedule_btn_doc"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/box_size_35"
+            android:layout_marginTop="@dimen/box_size_5"
+            android:textSize="@dimen/txt_size_15"
+            android:textColor="@color/color_ffffff"
+            android:fontFamily="@font/roboto_medium"
+            android:background="@drawable/bg_square_f70639"
+            app:layout_constraintTop_toBottomOf="@id/ri_work_schedule_ll_owner"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/ri_work_schedule_ll_receiver"
+            app:layout_constraintEnd_toStartOf="@id/ri_work_schedule_btn_sign"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/ri_work_schedule_btn_sign"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/box_size_35"
+            android:layout_marginTop="@dimen/box_size_5"
+            android:layout_marginStart="@dimen/box_size_5"
+            android:textSize="@dimen/txt_size_15"
+            android:textColor="@color/color_ffffff"
+            android:fontFamily="@font/roboto_medium"
+            android:background="@drawable/bg_square_f70639"
+            android:backgroundTint="@color/color_f70639"
+            app:layout_constraintTop_toBottomOf="@id/ri_work_schedule_ll_owner"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/ri_work_schedule_btn_doc"
+            app:layout_constraintEnd_toEndOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

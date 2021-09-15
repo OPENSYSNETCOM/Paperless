@@ -1,0 +1,688 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/work_paper_register_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/box_size_56"
+            app:contentInsetStart="0dp"
+            app:contentInsetEnd="0dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/work_paper_register_sv_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <ScrollView
+            android:id="@+id/work_paper_register_sv_content"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:fillViewport="true"
+            app:layout_constraintTop_toBottomOf="@id/work_paper_register_toolbar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/color_e9eff2">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/box_size_69"
+                    android:layout_marginTop="@dimen/box_size_1"
+                    android:paddingTop="@dimen/box_size_9"
+                    android:paddingStart="@dimen/box_size_15"
+                    android:paddingEnd="@dimen/box_size_15"
+                    android:orientation="vertical"
+                    android:background="@color/color_ffffff">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/paper_store_name"
+                        android:textSize="@dimen/txt_size_12"
+                        android:textColor="@color/color_959595"
+                        android:fontFamily="@font/roboto_regular"/>
+
+                    <TextView
+                        android:id="@+id/work_paper_reg_tv_store_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:textSize="@dimen/txt_size_15"
+                        android:textColor="@color/color_262626"
+                        android:fontFamily="@font/roboto_bold"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/box_size_69"
+                    android:layout_marginTop="@dimen/box_size_1"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:paddingTop="@dimen/box_size_9"
+                        android:paddingStart="@dimen/box_size_15"
+                        android:paddingEnd="@dimen/box_size_15"
+                        android:orientation="vertical"
+                        android:background="@color/color_ffffff">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/paper_store_code"
+                            android:textSize="@dimen/txt_size_12"
+                            android:textColor="@color/color_959595"
+                            android:fontFamily="@font/roboto_regular"/>
+
+                        <TextView
+                            android:id="@+id/work_paper_reg_tv_store_code"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:textSize="@dimen/txt_size_15"
+                            android:textColor="@color/color_262626"
+                            android:fontFamily="@font/roboto_bold"/>
+                    </LinearLayout>
+
+                    <Space
+                        android:layout_width="@dimen/box_size_1"
+                        android:layout_height="wrap_content"/>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:paddingTop="@dimen/box_size_9"
+                        android:orientation="vertical"
+                        android:background="@color/color_ffffff">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingStart="@dimen/box_size_15"
+                            android:paddingEnd="@dimen/box_size_15"
+                            android:text="@string/paper_store_type"
+                            android:textSize="@dimen/txt_size_12"
+                            android:textColor="@color/color_959595"
+                            android:fontFamily="@font/roboto_regular"/>
+
+
+                        <Spinner
+                            android:id="@+id/work_paper_reg_sp_store_type"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/box_size_69"
+                    android:layout_marginTop="@dimen/box_size_1"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:paddingTop="@dimen/box_size_9"
+                        android:paddingStart="@dimen/box_size_15"
+                        android:paddingEnd="@dimen/box_size_15"
+                        android:orientation="vertical"
+                        android:background="@color/color_ffffff">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/paper_open_date"
+                            android:textSize="@dimen/txt_size_12"
+                            android:textColor="@color/color_959595"
+                            android:fontFamily="@font/roboto_regular"/>
+
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/work_paper_reg_cl_open_date"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:id="@+id/work_paper_reg_tv_open_date"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:paddingEnd="@dimen/box_size_13"
+                                android:gravity="center_vertical"
+                                android:background="@null"
+                                android:text="Test"
+                                android:textSize="@dimen/txt_size_15"
+                                android:textColor="@color/color_262626"
+                                android:fontFamily="@font/roboto_bold"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toStartOf="@id/work_paper_reg_iv_open_date"/>
+
+                            <ImageView
+                                android:id="@+id/work_paper_reg_iv_open_date"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_month"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toEndOf="@id/work_paper_reg_tv_open_date"
+                                app:layout_constraintEnd_toEndOf="parent"/>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </LinearLayout>
+
+                    <Space
+                        android:layout_width="@dimen/box_size_1"
+                        android:layout_height="wrap_content"/>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:paddingTop="@dimen/box_size_9"
+                        android:paddingStart="@dimen/box_size_15"
+                        android:paddingEnd="@dimen/box_size_15"
+                        android:orientation="vertical"
+                        android:background="@color/color_ffffff">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/paper_work_date"
+                            android:textSize="@dimen/txt_size_12"
+                            android:textColor="@color/color_959595"
+                            android:fontFamily="@font/roboto_regular"/>
+
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/work_paper_reg_cl_work_date"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:id="@+id/work_paper_reg_tv_work_date"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:paddingEnd="@dimen/box_size_13"
+                                android:gravity="center_vertical"
+                                android:background="@null"
+                                android:text="Test"
+                                android:textSize="@dimen/txt_size_15"
+                                android:textColor="@color/color_262626"
+                                android:fontFamily="@font/roboto_bold"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toStartOf="@id/work_paper_reg_iv_work_date"/>
+
+                            <ImageView
+                                android:id="@+id/work_paper_reg_iv_work_date"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_month"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toEndOf="@id/work_paper_reg_tv_work_date"
+                                app:layout_constraintEnd_toEndOf="parent"/>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/box_size_69"
+                    android:layout_marginTop="@dimen/box_size_1"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:paddingTop="@dimen/box_size_9"
+                        android:paddingStart="@dimen/box_size_15"
+                        android:paddingEnd="@dimen/box_size_15"
+                        android:orientation="vertical"
+                        android:background="@color/color_ffffff">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/paper_come_time"
+                            android:textSize="@dimen/txt_size_12"
+                            android:textColor="@color/color_959595"
+                            android:fontFamily="@font/roboto_regular"/>
+
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/work_paper_reg_cl_come_time"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:id="@+id/work_paper_reg_tv_come_time"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:paddingEnd="@dimen/box_size_13"
+                                android:gravity="center_vertical"
+                                android:background="@null"
+                                android:text="Test"
+                                android:textSize="@dimen/txt_size_15"
+                                android:textColor="@color/color_262626"
+                                android:fontFamily="@font/roboto_bold"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toStartOf="@id/work_paper_reg_iv_come_time"/>
+
+                            <ImageView
+                                android:id="@+id/work_paper_reg_iv_come_time"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_time"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toEndOf="@id/work_paper_reg_tv_come_time"
+                                app:layout_constraintEnd_toEndOf="parent"/>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </LinearLayout>
+
+                    <Space
+                        android:layout_width="@dimen/box_size_1"
+                        android:layout_height="wrap_content"/>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:paddingTop="@dimen/box_size_9"
+                        android:paddingStart="@dimen/box_size_15"
+                        android:paddingEnd="@dimen/box_size_15"
+                        android:orientation="vertical"
+                        android:background="@color/color_ffffff">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/paper_work_time"
+                            android:textSize="@dimen/txt_size_12"
+                            android:textColor="@color/color_959595"
+                            android:fontFamily="@font/roboto_regular"/>
+
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/work_paper_reg_cl_work_time"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:id="@+id/work_paper_reg_tv_work_time"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:paddingEnd="@dimen/box_size_13"
+                                android:gravity="center_vertical"
+                                android:background="@null"
+                                android:text="Test"
+                                android:textSize="@dimen/txt_size_15"
+                                android:textColor="@color/color_262626"
+                                android:fontFamily="@font/roboto_bold"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toStartOf="@id/work_paper_reg_iv_work_time"/>
+
+                            <ImageView
+                                android:id="@+id/work_paper_reg_iv_work_time"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_time"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toEndOf="@id/work_paper_reg_tv_work_time"
+                                app:layout_constraintEnd_toEndOf="parent"/>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/box_size_69"
+                    android:layout_marginTop="@dimen/box_size_1"
+                    android:paddingTop="@dimen/box_size_9"
+                    android:paddingStart="@dimen/box_size_15"
+                    android:paddingEnd="@dimen/box_size_15"
+                    android:orientation="vertical"
+                    android:background="@color/color_ffffff">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/paper_work_type"
+                        android:textSize="@dimen/txt_size_12"
+                        android:textColor="@color/color_959595"
+                        android:fontFamily="@font/roboto_regular"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <RadioGroup
+                            android:id="@+id/work_paper_reg_rg_work_type"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/work_paper_reg_rb_work_type_add"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:paddingStart="@dimen/box_size_6"
+                                android:paddingEnd="@dimen/box_size_6"
+                                android:button="@drawable/cb_circle_button"
+                                android:buttonTint="@color/color_434f5a"
+                                android:text="@string/work_paper_register_type_add"
+                                android:textSize="@dimen/txt_size_15"
+                                android:textColor="@color/color_262626"
+                                android:fontFamily="@font/roboto_medium"/>
+
+                            <RadioButton
+                                android:id="@+id/work_paper_reg_rb_work_type_remove"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:paddingStart="@dimen/box_size_6"
+                                android:paddingEnd="@dimen/box_size_6"
+                                android:button="@drawable/cb_circle_button"
+                                android:buttonTint="@color/color_434f5a"
+                                android:text="@string/work_paper_register_type_remove"
+                                android:textSize="@dimen/txt_size_15"
+                                android:textColor="@color/color_262626"
+                                android:fontFamily="@font/roboto_medium"/>
+                        </RadioGroup>
+
+                        <TextView
+                            android:id="@+id/work_paper_reg_tv_work_division"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:paddingEnd="@dimen/box_size_13"
+                            android:gravity="center_vertical"
+                            android:background="@null"
+                            android:textSize="@dimen/txt_size_15"
+                            android:textColor="@color/color_262626"
+                            android:fontFamily="@font/roboto_bold"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/work_paper_reg_ll_menu_device"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/box_size_40"
+                    android:layout_marginTop="@dimen/box_size_1"
+                    android:paddingStart="@dimen/box_size_15"
+                    android:paddingEnd="@dimen/box_size_15"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:background="@color/color_ed1c24">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/work_paper_device"
+                        android:textSize="@dimen/txt_size_14"
+                        android:textColor="@color/color_ffffff"
+                        android:fontFamily="@font/roboto_medium"/>
+
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"/>
+
+                    <ImageView
+                        android:id="@+id/work_paper_reg_iv_menu_device"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_slidedown_wh"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/work_paper_reg_ll_menu_device_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/box_size_15"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:descendantFocusability="blocksDescendants">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/work_paper_reg_rv_device"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:nestedScrollingEnabled="false">
+
+                        </androidx.recyclerview.widget.RecyclerView>
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:id="@+id/work_paper_reg_ll_device_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                    </LinearLayout>
+
+                    <include
+                        android:id="@+id/work_paper_reg_inc_device_sam"
+                        layout="@layout/comp_work_paper_device_sam"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/work_paper_reg_ll_menu_check"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/box_size_40"
+                    android:layout_marginTop="@dimen/box_size_1"
+                    android:paddingStart="@dimen/box_size_15"
+                    android:paddingEnd="@dimen/box_size_15"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:background="@color/color_ed1c24">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/work_paper_check"
+                        android:textSize="@dimen/txt_size_14"
+                        android:textColor="@color/color_ffffff"
+                        android:fontFamily="@font/roboto_medium"/>
+
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"/>
+
+                    <ImageView
+                        android:id="@+id/work_paper_reg_iv_menu_check"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_slidedown_wh"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/work_paper_reg_ll_menu_check_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/box_size_15"
+                    android:orientation="vertical">
+
+                    <include
+                        android:id="@+id/work_paper_reg_inc_check_pos_num"
+                        layout="@layout/comp_work_paper_check_pos_num"/>
+
+                    <include
+                        android:id="@+id/work_paper_reg_inc_check_pos_ver"
+                        layout="@layout/comp_work_paper_check_pos_ver"/>
+
+                    <include
+                        android:id="@+id/work_paper_reg_inc_check_date"
+                        layout="@layout/comp_work_paper_check_date"/>
+
+                    <include
+                        android:id="@+id/work_paper_reg_inc_check_got"
+                        layout="@layout/comp_work_paper_check_got"/>
+
+                    <include
+                        android:id="@+id/work_paper_reg_inc_check_internet"
+                        layout="@layout/comp_work_paper_check_internet"/>
+
+                    <LinearLayout
+                        android:id="@+id/work_paper_reg_ll_after_internet"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <include
+                            android:id="@+id/work_paper_reg_inc_check_sc_pgm"
+                            layout="@layout/comp_work_paper_check_sc_pgm"/>
+
+                        <include
+                            android:id="@+id/work_paper_reg_inc_check_pos_cash"
+                            layout="@layout/comp_work_paper_check_pos_cash"/>
+
+                        <include
+                            android:id="@+id/work_paper_reg_inc_check_pos_credit"
+                            layout="@layout/comp_work_paper_check_pos_credit"/>
+
+                        <include
+                            android:id="@+id/work_paper_reg_inc_check_pos_service"
+                            layout="@layout/comp_work_paper_check_pos_service"/>
+
+                        <include
+                            android:id="@+id/work_paper_reg_inc_check_sc_work"
+                            layout="@layout/comp_work_paper_check_sc_work"/>
+
+                        <include
+                            android:id="@+id/work_paper_reg_inc_check_got_update"
+                            layout="@layout/comp_work_paper_check_got_update"/>
+
+                        <include
+                            android:id="@+id/work_paper_reg_inc_check_tmoney"
+                            layout="@layout/comp_work_paper_check_tmoney"/>
+
+                        <include
+                            android:id="@+id/work_paper_reg_inc_check_hanpay"
+                            layout="@layout/comp_work_paper_check_hanpay"/>
+
+                        <include
+                            android:id="@+id/work_paper_reg_inc_check_mybee"
+                            layout="@layout/comp_work_paper_check_mybee"/>
+
+                        <include
+                            android:id="@+id/work_paper_reg_inc_check_cashbee"
+                            layout="@layout/comp_work_paper_check_cashbee"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/work_paper_reg_ll_menu_remark"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/box_size_40"
+                    android:layout_marginTop="@dimen/box_size_1"
+                    android:paddingStart="@dimen/box_size_15"
+                    android:paddingEnd="@dimen/box_size_15"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:background="@color/color_ed1c24">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/work_paper_remark"
+                        android:textSize="@dimen/txt_size_14"
+                        android:textColor="@color/color_ffffff"
+                        android:fontFamily="@font/roboto_medium"/>
+
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"/>
+
+                    <ImageView
+                        android:id="@+id/work_paper_reg_iv_menu_remark"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_slidedown_wh"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/work_paper_reg_ll_menu_remark_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/work_paper_reg_et_remark_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/box_size_15"
+                        android:layout_marginStart="@dimen/box_size_15"
+                        android:layout_marginEnd="@dimen/box_size_15"
+                        android:padding="@dimen/box_size_15"
+                        android:gravity="start|top"
+                        android:textSize="@dimen/txt_size_15"
+                        android:textColor="@color/color_262626"
+                        android:hint="@string/work_paper_register_remark_content_hint"
+                        android:textColorHint="@color/color_262626_20"
+                        android:background="@color/color_ffffff"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/box_size_1"
+                        android:layout_marginStart="@dimen/box_size_15"
+                        android:layout_marginEnd="@dimen/box_size_15"
+                        android:paddingTop="@dimen/box_size_9"
+                        android:paddingStart="@dimen/box_size_15"
+                        android:paddingEnd="@dimen/box_size_15"
+                        android:background="@color/color_ffffff"
+                        android:text="@string/work_paper_register_remark_device_title"
+                        android:textSize="@dimen/txt_size_12"
+                        android:textColor="@color/color_959595"
+                        android:fontFamily="@font/roboto_regular"/>
+
+                    <EditText
+                        android:id="@+id/work_paper_reg_et_remark_device"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/box_size_15"
+                        android:layout_marginStart="@dimen/box_size_15"
+                        android:layout_marginEnd="@dimen/box_size_15"
+                        android:padding="@dimen/box_size_15"
+                        android:gravity="start|top"
+                        android:textSize="@dimen/txt_size_15"
+                        android:textColor="@color/color_262626"
+                        android:hint="@string/work_paper_register_remark_device_hint"
+                        android:textColorHint="@color/color_262626_20"
+                        android:background="@color/color_ffffff"/>
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

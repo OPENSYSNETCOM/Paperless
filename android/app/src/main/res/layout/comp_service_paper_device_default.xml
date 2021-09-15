@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/box_size_10"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/comp_service_device_default_ll_title"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/box_size_45"
+            android:paddingStart="@dimen/box_size_18"
+            android:paddingEnd="@dimen/box_size_13"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@drawable/bg_border_434f5a">
+
+            <TextView
+                android:id="@+id/comp_service_device_default_tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_medium"
+                android:textColor="@color/color_262626"
+                android:textSize="@dimen/txt_size_15" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+
+            <ImageView
+                android:id="@+id/comp_service_device_default_iv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_slidedown"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/comp_service_device_default_ll_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/box_size_69"
+                android:layout_marginTop="@dimen/box_size_1"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:paddingTop="@dimen/box_size_9"
+                    android:orientation="vertical"
+                    android:background="@color/color_ffffff">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="@dimen/box_size_15"
+                        android:paddingEnd="@dimen/box_size_15"
+                        android:background="@color/color_ffffff"
+                        android:text="@string/work_paper_device_model"
+                        android:textSize="@dimen/txt_size_12"
+                        android:textColor="@color/color_959595"
+                        android:fontFamily="@font/roboto_regular"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <Spinner
+                            android:id="@+id/comp_service_device_default_sp_spinner"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="@dimen/box_size_1"
+                    android:layout_height="wrap_content"/>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:paddingTop="@dimen/box_size_9"
+                    android:paddingStart="@dimen/box_size_15"
+                    android:paddingEnd="@dimen/box_size_15"
+                    android:orientation="vertical"
+                    android:background="@color/color_ffffff">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/color_ffffff"
+                        android:text="@string/service_paper_dev_num"
+                        android:textSize="@dimen/txt_size_12"
+                        android:textColor="@color/color_959595"
+                        android:fontFamily="@font/roboto_regular"/>
+
+                    <EditText
+                        android:id="@+id/comp_service_device_default_et_dev_num"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:background="@color/color_ffffff"
+                        android:inputType="number"
+                        android:textSize="@dimen/txt_size_15"
+                        android:textColor="@color/color_262626"
+                        android:fontFamily="@font/roboto_bold"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/box_size_13"
+                android:background="@color/color_f3f6f8">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/service_paper_check_list"
+                    android:textSize="@dimen/txt_size_12"
+                    android:textColor="@color/color_959595"
+                    android:fontFamily="@font/roboto_regular"/>
+
+                <TextView
+                    android:id="@+id/comp_service_device_default_tv_check_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/txt_size_15"
+                    android:textColor="@color/color_262626"
+                    android:fontFamily="@font/roboto_medium"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/box_size_1"
+                android:paddingTop="@dimen/box_size_9"
+                android:paddingStart="@dimen/box_size_15"
+                android:paddingEnd="@dimen/box_size_15"
+                android:background="@color/color_ffffff"
+                android:text="@string/service_paper_reason"
+                android:textSize="@dimen/txt_size_12"
+                android:textColor="@color/color_959595"
+                android:fontFamily="@font/roboto_regular"/>
+
+            <EditText
+                android:id="@+id/comp_service_device_default_et_reason"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/box_size_15"
+                android:paddingEnd="@dimen/box_size_15"
+                android:paddingTop="@dimen/box_size_10"
+                android:paddingBottom="@dimen/box_size_10"
+                android:gravity="center_vertical"
+                android:background="@color/color_ffffff"
+                android:textSize="@dimen/txt_size_15"
+                android:textColor="@color/color_262626"
+                android:hint="@string/service_paper_reason_hint"
+                android:textColorHint="@color/color_262626_20"
+                android:fontFamily="@font/roboto_bold"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/box_size_1"
+                android:paddingTop="@dimen/box_size_9"
+                android:paddingStart="@dimen/box_size_15"
+                android:paddingEnd="@dimen/box_size_15"
+                android:background="@color/color_ffffff"
+                android:text="@string/service_paper_result"
+                android:textSize="@dimen/txt_size_12"
+                android:textColor="@color/color_959595"
+                android:fontFamily="@font/roboto_regular"/>
+
+            <EditText
+                android:id="@+id/comp_service_device_default_et_result"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/box_size_15"
+                android:paddingEnd="@dimen/box_size_15"
+                android:paddingTop="@dimen/box_size_10"
+                android:paddingBottom="@dimen/box_size_10"
+                android:gravity="center_vertical"
+                android:background="@color/color_ffffff"
+                android:textSize="@dimen/txt_size_15"
+                android:textColor="@color/color_262626"
+                android:hint="@string/service_paper_result_hint"
+                android:textColorHint="@color/color_262626_20"
+                android:fontFamily="@font/roboto_bold"/>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

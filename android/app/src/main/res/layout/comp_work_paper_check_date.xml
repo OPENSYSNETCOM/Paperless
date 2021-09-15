@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/box_size_10"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/comp_check_date_ll_title"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/box_size_45"
+            android:paddingStart="@dimen/box_size_18"
+            android:paddingEnd="@dimen/box_size_13"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@drawable/bg_border_434f5a">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/work_paper_date"
+                android:textSize="@dimen/txt_size_15"
+                android:textColor="@color/color_262626"
+                android:fontFamily="@font/roboto_medium"/>
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+
+            <ImageView
+                android:id="@+id/comp_check_date_iv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_slidedown"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/comp_check_date_ll_content"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/box_size_69"
+            android:layout_marginTop="@dimen/box_size_1"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:paddingTop="@dimen/box_size_9"
+                android:paddingStart="@dimen/box_size_15"
+                android:paddingEnd="@dimen/box_size_15"
+                android:orientation="vertical"
+                android:background="@color/color_ffffff">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/paper_open_date"
+                    android:textSize="@dimen/txt_size_12"
+                    android:textColor="@color/color_959595"
+                    android:fontFamily="@font/roboto_regular"/>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/comp_check_date_cl_open_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/comp_check_date_tv_open_date"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:paddingEnd="@dimen/box_size_13"
+                        android:gravity="center_vertical"
+                        android:background="@null"
+                        android:text="Test"
+                        android:textSize="@dimen/txt_size_15"
+                        android:textColor="@color/color_262626"
+                        android:fontFamily="@font/roboto_bold"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/comp_check_date_iv_open_date"/>
+
+                    <ImageView
+                        android:id="@+id/comp_check_date_iv_open_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_month"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/comp_check_date_tv_open_date"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+
+            <Space
+                android:layout_width="@dimen/box_size_1"
+                android:layout_height="wrap_content"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:paddingTop="@dimen/box_size_9"
+                android:paddingStart="@dimen/box_size_15"
+                android:paddingEnd="@dimen/box_size_15"
+                android:orientation="vertical"
+                android:background="@color/color_ffffff">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/paper_sales_date"
+                    android:textSize="@dimen/txt_size_12"
+                    android:textColor="@color/color_959595"
+                    android:fontFamily="@font/roboto_regular"/>
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/comp_check_date_cl_sales_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/comp_check_date_tv_sales_date"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:paddingEnd="@dimen/box_size_13"
+                        android:gravity="center_vertical"
+                        android:background="@null"
+                        android:text="Test"
+                        android:textSize="@dimen/txt_size_15"
+                        android:textColor="@color/color_262626"
+                        android:fontFamily="@font/roboto_bold"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/comp_check_date_iv_sales_date"/>
+
+                    <ImageView
+                        android:id="@+id/comp_check_date_iv_sales_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_month"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/comp_check_date_tv_sales_date"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

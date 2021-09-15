@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/comp_check_pos_num_ll_title"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/box_size_45"
+            android:paddingStart="@dimen/box_size_18"
+            android:paddingEnd="@dimen/box_size_13"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@drawable/bg_border_434f5a">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_medium"
+                android:text="@string/work_paper_pos_num"
+                android:textColor="@color/color_262626"
+                android:textSize="@dimen/txt_size_15" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+
+            <ImageView
+                android:id="@+id/comp_check_pos_num_iv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_slidedown"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/comp_check_pos_num_ll_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/box_size_9"
+                android:paddingStart="@dimen/box_size_15"
+                android:paddingEnd="@dimen/box_size_15"
+                android:background="@color/color_ffffff"
+                android:text="@string/work_paper_status"
+                android:textSize="@dimen/txt_size_12"
+                android:textColor="@color/color_959595"
+                android:fontFamily="@font/roboto_regular"/>
+
+            <RadioGroup
+                android:id="@+id/comp_check_pos_num_rg_status"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/box_size_45"
+                android:paddingStart="@dimen/box_size_15"
+                android:paddingEnd="@dimen/box_size_15"
+                android:orientation="horizontal"
+                android:background="@color/color_ffffff">
+
+                <RadioButton
+                    android:id="@+id/comp_check_pos_num_rb_status_yes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:paddingStart="@dimen/box_size_6"
+                    android:paddingEnd="@dimen/box_size_22"
+                    android:button="@drawable/cb_circle_button"
+                    android:buttonTint="@color/color_434f5a"
+                    android:text="@string/txt_yes"
+                    android:textSize="@dimen/txt_size_15"
+                    android:textColor="@color/color_262626"
+                    android:fontFamily="@font/roboto_medium"/>
+
+                <RadioButton
+                    android:id="@+id/comp_check_pos_num_rb_status_no"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:paddingStart="@dimen/box_size_6"
+                    android:paddingEnd="@dimen/box_size_22"
+                    android:button="@drawable/cb_circle_button"
+                    android:buttonTint="@color/color_434f5a"
+                    android:text="@string/txt_no"
+                    android:textSize="@dimen/txt_size_15"
+                    android:textColor="@color/color_262626"
+                    android:fontFamily="@font/roboto_medium"/>
+            </RadioGroup>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/box_size_1"
+                android:paddingTop="@dimen/box_size_9"
+                android:paddingStart="@dimen/box_size_15"
+                android:paddingEnd="@dimen/box_size_15"
+                android:background="@color/color_ffffff"
+                android:text="@string/work_paper_pos_set_check"
+                android:textSize="@dimen/txt_size_12"
+                android:textColor="@color/color_959595"
+                android:fontFamily="@font/roboto_regular"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/box_size_45"
+                android:paddingStart="@dimen/box_size_15"
+                android:paddingEnd="@dimen/box_size_15"
+                android:orientation="horizontal"
+                android:background="@color/color_ffffff">
+
+                <CheckBox
+                    android:id="@+id/comp_check_pos_num_cb_set_pos1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:paddingStart="@dimen/box_size_6"
+                    android:paddingEnd="@dimen/box_size_18"
+                    android:button="@drawable/cb_square_button"
+                    android:buttonTint="@color/color_434f5a"
+                    android:text="@string/txt_pos1"
+                    android:textSize="@dimen/txt_size_15"
+                    android:textColor="@color/color_262626"
+                    android:fontFamily="@font/roboto_medium"/>
+
+                <CheckBox
+                    android:id="@+id/comp_check_pos_num_cb_set_pos2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:paddingStart="@dimen/box_size_6"
+                    android:paddingEnd="@dimen/box_size_18"
+                    android:button="@drawable/cb_square_button"
+                    android:buttonTint="@color/color_434f5a"
+                    android:text="@string/txt_pos2"
+                    android:textSize="@dimen/txt_size_15"
+                    android:textColor="@color/color_262626"
+                    android:fontFamily="@font/roboto_medium"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:id="@+id/map_marker_store_ll_container"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/box_size_32"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@drawable/bg_radius_434f5a">
+
+        <TextView
+            android:id="@+id/map_marker_store_tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/box_size_12"
+            android:layout_marginEnd="@dimen/box_size_12"
+            android:textSize="@dimen/txt_size_12"
+            android:textColor="@color/color_ffffff"
+            android:fontFamily="@font/roboto_medium"/>
+    </LinearLayout>
+</layout>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="@dimen/box_size_280"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/color_d7d7d7">
+
+        <TextView
+            android:id="@+id/dialog_simple_tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/box_size_54"
+            android:paddingStart="@dimen/box_size_19"
+            android:paddingEnd="@dimen/box_size_19"
+            android:gravity="center_vertical"
+            android:text="@string/dialog_store_type_title"
+            android:textSize="@dimen/txt_size_17"
+            android:textColor="@color/color_000000"
+            android:fontFamily="@font/roboto_medium"
+            android:background="@color/color_ffffff"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/color_ffffff">
+
+            <TextView
+                android:id="@+id/dialog_simple_tv_message"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/box_size_10"
+                android:layout_marginBottom="@dimen/box_size_10"
+                android:layout_marginStart="@dimen/box_size_19"
+                android:layout_marginEnd="@dimen/box_size_19"
+                android:text="Test message"
+                android:textSize="@dimen/txt_size_16"
+                android:textColor="@color/color_000000"
+                android:fontFamily="@font/roboto_regular"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/box_size_65"
+            android:layout_marginTop="@dimen/box_size_1"
+            android:paddingStart="@dimen/box_size_19"
+            android:paddingEnd="@dimen/box_size_19"
+            android:gravity="center_vertical|end"
+            android:orientation="horizontal"
+            android:background="@color/color_ffffff">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/dialog_simple_btn_cancel"
+                android:layout_width="@dimen/box_size_80"
+                android:layout_height="@dimen/box_size_45"
+                android:text="@string/txt_cancel"
+                android:textSize="@dimen/txt_size_18"
+                android:textColor="@color/color_000000"
+                android:fontFamily="@font/roboto_medium"
+                android:background="@color/color_ffffff"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/dialog_simple_btn_confirm"
+                android:layout_width="@dimen/box_size_80"
+                android:layout_height="@dimen/box_size_45"
+                android:text="@string/txt_confirm"
+                android:textSize="@dimen/txt_size_18"
+                android:textColor="@color/color_ffffff"
+                android:fontFamily="@font/roboto_medium"
+                android:background="@color/color_ed1c24"/>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

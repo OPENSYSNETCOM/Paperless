@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <CheckBox
+        android:id="@+id/ri_work_device_list_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/box_size_55"
+        android:layout_margin="@dimen/box_size_0_5"
+        android:button="@null"
+        android:background="@drawable/bg_radio_work_device_list"
+        android:gravity="center"
+        android:textSize="@dimen/txt_size_14"
+        android:textColor="@drawable/tc_radio_work_device_list"
+        android:fontFamily="@font/roboto_bold"/>
+</layout>

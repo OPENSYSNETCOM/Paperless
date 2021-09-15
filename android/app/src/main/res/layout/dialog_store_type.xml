@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="@dimen/box_size_280"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/color_d7d7d7">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/box_size_54"
+            android:paddingStart="@dimen/box_size_19"
+            android:paddingEnd="@dimen/box_size_19"
+            android:gravity="center_vertical"
+            android:text="@string/dialog_store_type_title"
+            android:textSize="@dimen/txt_size_17"
+            android:textColor="@color/color_000000"
+            android:fontFamily="@font/roboto_medium"
+            android:background="@color/color_ffffff"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/color_ffffff">
+
+            <RadioButton
+                android:id="@+id/dialog_store_type_rb_direct"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/box_size_45"
+                android:layout_marginStart="@dimen/box_size_19"
+                android:layout_marginEnd="@dimen/box_size_19"
+                android:paddingStart="@dimen/box_size_7"
+                android:paddingEnd="@dimen/box_size_7"
+                android:button="@drawable/cb_circle_button"
+                android:buttonTint="@color/color_434f5a"
+                android:text="@string/dialog_store_type_direct"
+                android:textSize="@dimen/txt_size_16"
+                android:textColor="@color/color_000000"
+                android:fontFamily="@font/roboto_regular"/>
+
+            <RadioButton
+                android:id="@+id/dialog_store_type_rb_a"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/box_size_45"
+                android:layout_marginStart="@dimen/box_size_19"
+                android:layout_marginEnd="@dimen/box_size_19"
+                android:paddingStart="@dimen/box_size_7"
+                android:paddingEnd="@dimen/box_size_7"
+                android:button="@drawable/cb_circle_button"
+                android:buttonTint="@color/color_434f5a"
+                android:text="@string/dialog_store_type_a"
+                android:textSize="@dimen/txt_size_16"
+                android:textColor="@color/color_000000"
+                android:fontFamily="@font/roboto_regular"/>
+
+            <RadioButton
+                android:id="@+id/dialog_store_type_rb_b"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/box_size_45"
+                android:layout_marginStart="@dimen/box_size_19"
+                android:layout_marginEnd="@dimen/box_size_19"
+                android:paddingStart="@dimen/box_size_7"
+                android:paddingEnd="@dimen/box_size_7"
+                android:button="@drawable/cb_circle_button"
+                android:buttonTint="@color/color_434f5a"
+                android:text="@string/dialog_store_type_b"
+                android:textSize="@dimen/txt_size_16"
+                android:textColor="@color/color_000000"
+                android:fontFamily="@font/roboto_regular"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/box_size_45"
+                android:layout_marginStart="@dimen/box_size_19"
+                android:layout_marginEnd="@dimen/box_size_19"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/dialog_store_type_rb_etc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:paddingStart="@dimen/box_size_7"
+                    android:paddingEnd="@dimen/box_size_16"
+                    android:button="@drawable/cb_circle_button"
+                    android:buttonTint="@color/color_434f5a"
+                    android:text="@string/dialog_store_type_etc"
+                    android:textSize="@dimen/txt_size_16"
+                    android:textColor="@color/color_000000"
+                    android:fontFamily="@font/roboto_regular"/>
+                
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/box_size_37"
+                    android:background="@color/color_b7b7b7">
+
+                    <EditText
+                        android:id="@+id/dialog_store_type_et_etc"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/box_size_0_5"
+                        android:paddingStart="@dimen/box_size_13"
+                        android:paddingEnd="@dimen/box_size_13"
+                        android:background="@color/color_ffffff"
+                        android:text="Test"
+                        android:singleLine="true"
+                        android:textSize="@dimen/txt_size_15"
+                        android:textColor="@color/color_262626"
+                        android:fontFamily="@font/roboto_medium"/>
+                </FrameLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/box_size_65"
+            android:layout_marginTop="@dimen/box_size_1"
+            android:paddingStart="@dimen/box_size_19"
+            android:paddingEnd="@dimen/box_size_19"
+            android:gravity="center_vertical|end"
+            android:orientation="horizontal"
+            android:background="@color/color_ffffff">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/dialog_store_type_btn_cancel"
+                android:layout_width="@dimen/box_size_80"
+                android:layout_height="@dimen/box_size_45"
+                android:text="@string/txt_cancel"
+                android:textSize="@dimen/txt_size_18"
+                android:textColor="@color/color_000000"
+                android:fontFamily="@font/roboto_medium"
+                android:background="@color/color_ffffff"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/dialog_store_type_btn_confirm"
+                android:layout_width="@dimen/box_size_80"
+                android:layout_height="@dimen/box_size_45"
+                android:text="@string/txt_confirm"
+                android:textSize="@dimen/txt_size_18"
+                android:textColor="@color/color_ffffff"
+                android:fontFamily="@font/roboto_medium"
+                android:background="@color/color_ed1c24"/>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

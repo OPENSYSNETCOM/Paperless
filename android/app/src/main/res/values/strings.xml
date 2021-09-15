@@ -1,0 +1,196 @@
+<resources>
+    <string name="app_name">paperless</string>
+
+    <string name="txt_o">O</string>
+    <string name="txt_x">X</string>
+    <string name="txt_yes">Yes</string>
+    <string name="txt_no">No</string>
+    <string name="txt_confirm">확인</string>
+    <string name="txt_cancel">취소</string>
+    <string name="txt_clear">지우기</string>
+    <string name="txt_exit_check">종료하시려면 뒤로가기 버튼을 다시 눌러주세요</string>
+
+    <string name="txt_pos1">POS1</string>
+    <string name="txt_pos2">POS2</string>
+    <string name="txt_pos3">POS3</string>
+
+    <string name="intro_version">VERSION %s</string>
+
+    <string name="login_title">HANSUNG ITSM</string>
+    <string name="login_id">아이디</string>
+    <string name="login_pwd">비밀번호</string>
+    <string name="login_button">로그인</string>
+    <string name="login_auth">자동로그인</string>
+
+    <string name="side_welcome">님 환영합니다.</string>
+    <string name="side_logout">로그아웃</string>
+    <string name="side_store_map">상점 지도</string>
+    <string name="side_work_schedule">작업 일정</string>
+    <string name="side_work_list">문서 목록</string>
+
+    <string name="toolbar_title_store_map">상점 지도</string>
+    <string name="toolbar_title_work_schedule">작업 일정</string>
+    <string name="toolbar_title_work_list">문서 목록</string>
+    <string name="toolbar_title_work_paper">설치확인서</string>
+    <string name="toolbar_title_service_paper">서비스확인서</string>
+    <string name="toolbar_button_add">추가</string>
+    <string name="toolbar_button_check">확인</string>
+
+    <string name="work_schedule_receiver">접수자</string>
+    <string name="work_schedule_owner">담당CE</string>
+    <string name="work_schedule_status">상태</string>
+    <string name="work_schedule_paper">문서</string>
+
+    <string name="work_list_menu_work">설치확인서</string>
+    <string name="work_list_menu_service">서비스확인서</string>
+    <string name="work_list_date_today">오늘</string>
+    <string name="work_list_date_week">1주</string>
+    <string name="work_list_date_month">1개월</string>
+    <string name="work_list_working_time">작업시간</string>
+    <string name="work_list_working_time_none">없음</string>
+    <string name="work_list_working_delete_check_work">설치확인서 [%s] 를 정말 삭제하시겠습니까?\n되돌릴 수 없습니다.</string>
+    <string name="work_list_working_delete_check_service">서비스확인서 [%s] 를 정말 삭제하시겠습니까?\n되돌릴 수 없습니다.</string>
+
+    <string name="paper_store_name">점포명</string>
+    <string name="paper_store_code">점포코드</string>
+    <string name="paper_store_type">점포타입</string>
+    <string name="paper_open_date">오픈일자</string>
+    <string name="paper_sales_date">영업일자</string>
+    <string name="paper_work_date">작업일자</string>
+    <string name="paper_receipt_date">접수일자</string>
+    <string name="paper_receipt_time">접수시간</string>
+    <string name="paper_visit_date">도착일자</string>
+    <string name="paper_visit_time">도착시간</string>
+    <string name="paper_comp_date">완료일자</string>
+    <string name="paper_comp_time">완료시간</string>
+    <string name="paper_come_time">방문시간</string>
+    <string name="paper_work_time">작업시간</string>
+    <string name="paper_work_type">작업구분</string>
+    <string name="work_paper_device">기기정보</string>
+    <string name="work_paper_device_code">자산코드</string>
+    <string name="work_paper_device_model">MODEL</string>
+    <string name="work_paper_device_type">장비구분</string>
+    <string name="work_paper_device_type_new">신규</string>
+    <string name="work_paper_device_type_old">중고</string>
+    <string name="work_paper_device_status">상태구분</string>
+    <string name="work_paper_device_status_good">양호</string>
+    <string name="work_paper_device_status_bad">불량</string>
+    <string name="work_paper_device_remark">비고 (특이사항)</string>
+    <string name="work_paper_device_remark_hint">특이사항을 입력해주세요.</string>
+    <string name="work_paper_device_broadcast">방송장비</string>
+    <string name="work_paper_device_sc">SC</string>
+    <string name="work_paper_device_vpn">VPN</string>
+    <string name="work_paper_device_ap">AP</string>
+    <string name="work_paper_device_pos">POS</string>
+    <string name="work_paper_device_dongle">동글 단말기</string>
+    <string name="work_paper_device_got">GOT</string>
+    <string name="work_paper_device_sc_monitor">SC 모니터</string>
+    <string name="work_paper_device_pos_scanner">POS 스캐너</string>
+    <string name="work_paper_device_got_scanner">GOT 스캐너</string>
+    <string name="work_paper_device_sc_scanner">SC 스캐너</string>
+    <string name="work_paper_device_printer">프린터</string>
+    <string name="work_paper_device_card">카드리더기</string>
+    <string name="work_paper_device_id">신분증감별기</string>
+    <string name="work_paper_device_sam">SAM S/N</string>
+    <string name="work_paper_device_sam_tmoney1">① T-money</string>
+    <string name="work_paper_device_sam_tmoney2">② T-money</string>
+    <string name="work_paper_device_sam_id1">① 통합샘</string>
+    <string name="work_paper_device_sam_id2">② 통합샘</string>
+    <string name="work_paper_device_sam_hint">S/N 입력</string>
+
+    <string name="work_paper_check">주요 확인사항</string>
+    <string name="work_paper_charge_part">유상점검 사용부품</string>
+    <string name="work_paper_charge_part_name">부품명</string>
+    <string name="work_paper_charge_part_name_hint">부품명 입력</string>
+    <string name="work_paper_charge_part_count">부품수량</string>
+    <string name="work_paper_charge_part_count_hint">부품수량 입력</string>
+    <string name="work_paper_pos_num">POS 번호 등록 확인</string>
+    <string name="work_paper_status">상태</string>
+    <string name="work_paper_pos_set_check">POS 번호 셋팅 확인</string>
+    <string name="work_paper_pos_ver">POS 버전</string>
+    <string name="work_paper_pos_ver1">① 버전</string>
+    <string name="work_paper_pos_ver2">② 버전</string>
+    <string name="work_paper_pos_ver_hint">버전 입력</string>
+    <string name="work_paper_got">GOT통신</string>
+    <string name="work_paper_date">점포OPEN일자 &amp; 영업일자 확인</string>
+    <string name="work_paper_division">구분</string>
+    <string name="work_paper_wpa">WPA</string>
+    <string name="work_paper_wep">WEP</string>
+    <string name="work_paper_internet">인터넷 개통 여부</string>
+    <string name="work_paper_internet_agency">통신사</string>
+    <string name="work_paper_internet_agency_hint">통신사 입력</string>
+    <string name="work_paper_sc_pgm">SC PGM Ver, Mst확인</string>
+    <string name="work_paper_version">버전</string>
+    <string name="work_paper_version_hint">버전 입력</string>
+    <string name="work_paper_pos_cash">POS 현금판매 (현금영수증)</string>
+    <string name="work_paper_pos_credit">POS 서비스 (신용카드)</string>
+    <string name="work_paper_accept_number">승인번호</string>
+    <string name="work_paper_accept_number_hint">승인번호 입력</string>
+    <string name="work_paper_pos_service">POS 서비스 (롯데포인트, olleh할인)</string>
+    <string name="work_paper_pos_service_type">종류</string>
+    <string name="work_paper_pos_service_type_hint">종류 입력</string>
+    <string name="work_paper_pos_service_discount">할인금액</string>
+    <string name="work_paper_pos_service_discount_hint">할인금액 입력</string>
+    <string name="work_paper_sc_work">SC 업무 (점포관리시스템)</string>
+    <string name="work_paper_produce">제조사</string>
+    <string name="work_paper_produce_hint">제조사 입력</string>
+    <string name="work_paper_got_update">GOT 업데이트 상태</string>
+    <string name="work_paper_tmoney">티머니</string>
+    <string name="work_paper_hanpay">한페이</string>
+    <string name="work_paper_mybee">마이비</string>
+    <string name="work_paper_cashbee">캐시비</string>
+    <string name="work_paper_tmoney_lsam">LSAM 등록여부</string>
+    <string name="work_paper_tmoney_lsam_reg">등록</string>
+    <string name="work_paper_tmoney_lsam_not_reg">등록 안됨</string>
+    <string name="work_paper_tmoney_charge_test">충전/반품 TEST</string>
+    <string name="work_paper_tmoney_pay_test">지불 TEST</string>
+    <string name="work_paper_tmoney_reason">미등록 사유</string>
+    <string name="work_paper_tmoney_reason_hint">미등록 사유를 입력해주세요.</string>
+
+    <string name="work_paper_remark">특이사항</string>
+    <string name="work_paper_sign">설치확인서 서명</string>
+
+    <string name="work_paper_register_type_add">설치</string>
+    <string name="work_paper_register_type_remove">철수</string>
+    <string name="work_paper_register_type_detail">상세 선택</string>
+    <string name="work_paper_register_remark_content_hint">내용을 입력해주세요.</string>
+    <string name="work_paper_register_remark_device_title">회수장비</string>
+    <string name="work_paper_register_remark_device_hint">회수 장비명을 입력해주세요.</string>
+
+    <string name="service_paper_type_as">A/S</string>
+    <string name="service_paper_type_periodic">정기점검</string>
+    <string name="service_paper_price">작업비용</string>
+    <string name="service_paper_price_charge">유상</string>
+    <string name="service_paper_price_free">무상</string>
+    <string name="service_paper_dev_num">설치 대수</string>
+    <string name="service_paper_check_list">점검내역</string>
+    <string name="service_paper_reason">장애내역</string>
+    <string name="service_paper_reason_hint">장애내역을 입력해주세요.</string>
+    <string name="service_paper_result">처리결과</string>
+    <string name="service_paper_result_hint">처리결과를 입력해주세요.</string>
+
+    <string name="paper_sign_tech">기술 담당자</string>
+    <string name="paper_sign_store">점포 확인자</string>
+    <string name="paper_sign_hint">서명란</string>
+    <string name="paper_sign_store_hint">이름을 입력해주세요.</string>
+    <string name="paper_sign_msg_work">표준설치 내용과 같이 작업을 완료하였습니다.</string>
+    <string name="paper_sign_msg_service">상기 내용과 같이 작업을 완료하였습니다.</string>
+
+    <string name="dialog_store_type_title">점포타입을 선택해주세요.</string>
+    <string name="dialog_store_type_direct">직영</string>
+    <string name="dialog_store_type_a">A</string>
+    <string name="dialog_store_type_b">B</string>
+    <string name="dialog_store_type_etc">기타</string>
+
+    <!-- Work Type -->
+    <string name="work_type_open">오픈</string>
+    <string name="work_type_change_store">법인변경</string>
+    <string name="work_type_renew">리뉴얼</string>
+    <string name="work_type_close">폐점</string>
+    <string name="work_type_change_owner">명의변경</string>
+    <string name="work_type_change_paper">공문교체</string>
+    <string name="work_type_etc">기타</string>
+
+    <!-- Device Type -->
+    <string name="device_type_all"></string>
+</resources>

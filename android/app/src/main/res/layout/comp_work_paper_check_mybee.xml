@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/box_size_10"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/comp_check_mybee_ll_title"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/box_size_45"
+            android:paddingStart="@dimen/box_size_18"
+            android:paddingEnd="@dimen/box_size_13"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@drawable/bg_border_434f5a">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/work_paper_mybee"
+                android:textSize="@dimen/txt_size_15"
+                android:textColor="@color/color_262626"
+                android:fontFamily="@font/roboto_medium"/>
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+
+            <ImageView
+                android:id="@+id/comp_check_mybee_iv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_slidedown"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/comp_check_mybee_ll_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/box_size_9"
+                android:paddingStart="@dimen/box_size_15"
+                android:paddingEnd="@dimen/box_size_15"
+                android:background="@color/color_ffffff"
+                android:text="@string/work_paper_tmoney_lsam"
+                android:textSize="@dimen/txt_size_12"
+                android:textColor="@color/color_959595"
+                android:fontFamily="@font/roboto_regular"/>
+
+            <RadioGroup
+                android:id="@+id/comp_check_mybee_rg_lsam"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/box_size_45"
+                android:paddingStart="@dimen/box_size_15"
+                android:paddingEnd="@dimen/box_size_15"
+                android:orientation="horizontal"
+                android:background="@color/color_ffffff">
+
+                <RadioButton
+                    android:id="@+id/comp_check_mybee_rb_lsam_yes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:paddingStart="@dimen/box_size_6"
+                    android:paddingEnd="@dimen/box_size_22"
+                    android:button="@drawable/cb_circle_button"
+                    android:buttonTint="@color/color_434f5a"
+                    android:text="@string/work_paper_tmoney_lsam_reg"
+                    android:textSize="@dimen/txt_size_15"
+                    android:textColor="@color/color_262626"
+                    android:fontFamily="@font/roboto_medium"/>
+
+                <RadioButton
+                    android:id="@+id/comp_check_mybee_rb_lsam_no"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:paddingStart="@dimen/box_size_6"
+                    android:paddingEnd="@dimen/box_size_22"
+                    android:button="@drawable/cb_circle_button"
+                    android:buttonTint="@color/color_434f5a"
+                    android:text="@string/work_paper_tmoney_lsam_not_reg"
+                    android:textSize="@dimen/txt_size_15"
+                    android:textColor="@color/color_262626"
+                    android:fontFamily="@font/roboto_medium"/>
+            </RadioGroup>
+
+            <LinearLayout
+                android:id="@+id/comp_check_mybee_ll_reason"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/box_size_1"
+                    android:paddingTop="@dimen/box_size_9"
+                    android:paddingStart="@dimen/box_size_15"
+                    android:paddingEnd="@dimen/box_size_15"
+                    android:background="@color/color_ffffff"
+                    android:text="@string/work_paper_tmoney_reason"
+                    android:textSize="@dimen/txt_size_12"
+                    android:textColor="@color/color_959595"
+                    android:fontFamily="@font/roboto_regular"/>
+
+                <EditText
+                    android:id="@+id/comp_check_mybee_et_reason"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/box_size_45"
+                    android:paddingStart="@dimen/box_size_15"
+                    android:paddingEnd="@dimen/box_size_15"
+                    android:gravity="center_vertical"
+                    android:background="@color/color_ffffff"
+                    android:textSize="@dimen/txt_size_15"
+                    android:textColor="@color/color_262626"
+                    android:hint="@string/work_paper_tmoney_reason_hint"
+                    android:textColorHint="@color/color_262626_20"
+                    android:fontFamily="@font/roboto_bold"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/box_size_69"
+                android:layout_marginTop="@dimen/box_size_1"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:paddingTop="@dimen/box_size_9"
+                    android:paddingStart="@dimen/box_size_15"
+                    android:paddingEnd="@dimen/box_size_15"
+                    android:background="@color/color_ffffff"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/work_paper_tmoney_charge_test"
+                        android:textSize="@dimen/txt_size_12"
+                        android:textColor="@color/color_959595"
+                        android:fontFamily="@font/roboto_regular"/>
+
+                    <RadioGroup
+                        android:id="@+id/comp_check_mybee_rg_charge"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/comp_check_mybee_rb_charge_yes"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:paddingStart="@dimen/box_size_6"
+                            android:button="@drawable/cb_circle_button"
+                            android:buttonTint="@color/color_434f5a"
+                            android:text="@string/txt_o"
+                            android:textSize="@dimen/txt_size_15"
+                            android:textColor="@color/color_262626"
+                            android:fontFamily="@font/roboto_medium"/>
+
+                        <RadioButton
+                            android:id="@+id/comp_check_mybee_rb_charge_no"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:paddingStart="@dimen/box_size_6"
+                            android:button="@drawable/cb_circle_button"
+                            android:buttonTint="@color/color_434f5a"
+                            android:text="@string/txt_x"
+                            android:textSize="@dimen/txt_size_15"
+                            android:textColor="@color/color_262626"
+                            android:fontFamily="@font/roboto_medium"/>
+                    </RadioGroup>
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="@dimen/box_size_1"
+                    android:layout_height="wrap_content"/>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:paddingTop="@dimen/box_size_9"
+                    android:paddingStart="@dimen/box_size_15"
+                    android:paddingEnd="@dimen/box_size_15"
+                    android:background="@color/color_ffffff"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/work_paper_tmoney_pay_test"
+                        android:textSize="@dimen/txt_size_12"
+                        android:textColor="@color/color_959595"
+                        android:fontFamily="@font/roboto_regular"/>
+
+                    <RadioGroup
+                        android:id="@+id/comp_check_mybee_rg_pay"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/comp_check_mybee_rb_pay_yes"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:paddingStart="@dimen/box_size_6"
+                            android:button="@drawable/cb_circle_button"
+                            android:buttonTint="@color/color_434f5a"
+                            android:text="@string/txt_o"
+                            android:textSize="@dimen/txt_size_15"
+                            android:textColor="@color/color_262626"
+                            android:fontFamily="@font/roboto_medium"/>
+
+                        <RadioButton
+                            android:id="@+id/comp_check_mybee_rb_pay_no"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:paddingStart="@dimen/box_size_6"
+                            android:button="@drawable/cb_circle_button"
+                            android:buttonTint="@color/color_434f5a"
+                            android:text="@string/txt_x"
+                            android:textSize="@dimen/txt_size_15"
+                            android:textColor="@color/color_262626"
+                            android:fontFamily="@font/roboto_medium"/>
+                    </RadioGroup>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

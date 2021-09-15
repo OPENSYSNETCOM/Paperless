@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/work_list_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/box_size_56"
+            app:contentInsetStart="0dp"
+            app:contentInsetEnd="0dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/work_list_fl_menu"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <FrameLayout
+            android:id="@+id/work_list_fl_menu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_000000_20"
+            app:layout_constraintTop_toBottomOf="@id/work_list_toolbar"
+            app:layout_constraintBottom_toTopOf="@id/work_list_ll_contents"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <RadioGroup
+                android:id="@+id/work_list_rg_menu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/box_size_0_5"
+                android:layout_marginBottom="@dimen/box_size_0_5"
+                android:orientation="horizontal"
+                android:background="@color/color_ffffff">
+
+                <RadioButton
+                    android:id="@+id/work_list_rb_menu_work"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/work_list_menu_work"
+                    android:textSize="@dimen/txt_size_14"
+                    android:textColor="@drawable/tc_radio_work_list_menu"
+                    android:fontFamily="@font/roboto_medium"
+                    android:background="@drawable/bg_radio_work_list_menu"
+                    android:gravity="center"
+                    android:button="@null"/>
+
+                <RadioButton
+                    android:id="@+id/work_list_rb_menu_service"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/work_list_menu_service"
+                    android:textSize="@dimen/txt_size_14"
+                    android:textColor="@drawable/tc_radio_work_list_menu"
+                    android:fontFamily="@font/roboto_medium"
+                    android:background="@drawable/bg_radio_work_list_menu"
+                    android:gravity="center"
+                    android:button="@null"/>
+            </RadioGroup>
+        </FrameLayout>
+
+        <LinearLayout
+            android:id="@+id/work_list_ll_contents"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:padding="@dimen/box_size_15"
+            android:orientation="vertical"
+            android:background="@color/color_e9eff2"
+            app:layout_constraintTop_toBottomOf="@id/work_list_fl_menu"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/box_size_42"
+                android:paddingTop="@dimen/box_size_10"
+                android:paddingStart="@dimen/box_size_22"
+                android:paddingEnd="@dimen/box_size_22"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:background="@color/color_ffffff">
+
+                <TextView
+                    android:id="@+id/work_list_tv_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/work_list_menu_work"
+                    android:textSize="@dimen/txt_size_17"
+                    android:textColor="@color/color_333333"
+                    android:fontFamily="@font/roboto_medium"/>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+
+                <RadioGroup
+                    android:id="@+id/work_list_rg_date"
+                    android:layout_width="@dimen/box_size_147"
+                    android:layout_height="@dimen/box_size_24"
+                    android:background="@drawable/bg_radius_f0f2f4"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <RadioButton
+                        android:id="@+id/work_list_rb_date_today"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="@string/work_list_date_today"
+                        android:textSize="@dimen/txt_size_12"
+                        android:textColor="@drawable/tc_radio_work_list_date"
+                        android:fontFamily="@font/roboto_regular"
+                        android:background="@drawable/bg_radio_work_list_date"
+                        android:gravity="center"
+                        android:button="@null"
+                        android:checked="true"/>
+
+                    <RadioButton
+                        android:id="@+id/work_list_rb_date_week"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="@string/work_list_date_week"
+                        android:textSize="@dimen/txt_size_12"
+                        android:textColor="@drawable/tc_radio_work_list_date"
+                        android:fontFamily="@font/roboto_regular"
+                        android:background="@drawable/bg_radio_work_list_date"
+                        android:gravity="center"
+                        android:button="@null"/>
+
+                    <RadioButton
+                        android:id="@+id/work_list_rb_date_month"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="@string/work_list_date_month"
+                        android:textSize="@dimen/txt_size_12"
+                        android:textColor="@drawable/tc_radio_work_list_date"
+                        android:fontFamily="@font/roboto_regular"
+                        android:background="@drawable/bg_radio_work_list_date"
+                        android:gravity="center"
+                        android:button="@null"/>
+                </RadioGroup>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/box_size_48"
+                android:background="@color/color_ffffff"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <FrameLayout
+                    android:id="@+id/work_list_fl_prev"
+                    android:layout_width="@dimen/box_size_52"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_prev"/>
+                </FrameLayout>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:id="@+id/work_list_tv_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/txt_size_14"
+                    android:textColor="@color/color_000000"
+                    android:fontFamily="@font/roboto_bold"/>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+
+                <FrameLayout
+                    android:id="@+id/work_list_fl_next"
+                    android:layout_width="@dimen/box_size_52"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_next"/>
+                </FrameLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/box_size_0_5"
+                android:background="@color/color_000000_20"/>
+
+            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                android:id="@+id/work_list_sr_refresher"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/work_list_rv_recycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingTop="@dimen/box_size_20"
+                    android:paddingBottom="@dimen/box_size_10"
+                    android:background="@color/color_ffffff"
+                    tools:listitem="@layout/recycler_item_work_list"/>
+            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
